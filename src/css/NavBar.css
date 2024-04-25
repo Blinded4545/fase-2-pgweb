@@ -1,0 +1,15 @@
+/* 
+.dropdown-toggle:after{
+    display: none !important;
+} */
+
+#dropdown-button{
+    background-image: url("../assets/account-cog.svg");
+    padding-left: 1rem;
+    background-color: transparent;
+    background-position: center;
+    color: transparent;
+    scale: 1.25;
+    border: none;
+    filter: invert(54%) sepia(48%) saturate(452%) hue-rotate(148deg) brightness(109%) contrast(91%);
+}
