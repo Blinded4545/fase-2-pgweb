@@ -8,6 +8,8 @@ import { Accordion } from "react-bootstrap";
 
 const FAQ = ()=>{
     return (
+
+        // Esta es solo la seccion de preguntas frecuentes, dado que son pocas se opto por crear cada acordion individualmente
         <div className="h-100">
             <div className="position-relative sticky-top w-100">
                 <NavBar/>

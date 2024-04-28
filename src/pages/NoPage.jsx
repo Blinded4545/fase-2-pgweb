@@ -6,7 +6,7 @@ import FooterComponent from "../components/Footer";
 const NoPage = ()=>{
     return (
         <>
-            
+            {/* Esta es solo una pagina por defecto para rutas no existentes o no accesibles sin iniciar sesion */}
             <div className="position-absolute w-100">
                 <NavBar/>
             </div>

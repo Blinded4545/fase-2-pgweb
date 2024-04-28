@@ -46,6 +46,7 @@ function App() {
             </PrivateRoute>
           }></Route>
           <Route path="/noPage" element={<NoPage/>}></Route>
+          <Route path="*" element={<NoPage/>}></Route>
         </Routes>
       </BrowserRouter>
     </>

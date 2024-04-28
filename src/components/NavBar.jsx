@@ -3,13 +3,17 @@ import { DropdownButton, Dropdown, Modal, Button, Form} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { useContext } from "react";
+
+// La libreria mdi es usada para importar iconos svg y usarlos de forma mas rapida y eficiente
 import { mdiEyeClosed, mdiEye } from "@mdi/js";
 import Icon from "@mdi/react";
+
 import loginContext from "../context/LoginContext";
 import "../css/NavBar.css"
 
 const NavBar = ()=>{
     const logggg = useContext(loginContext)
+
     const [usrInput, setUsrInput] = useState("")
     const [ShowLoginModal, setShowLoginModal] = useState(false)
     const [showPassword, setShowPassword] = useState(false)

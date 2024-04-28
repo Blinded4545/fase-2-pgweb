@@ -6,84 +6,12 @@ import reducer from "./Reducers/Reducer";
 import usrReducer from "./Reducers/usrReducer"
 import reservReducer from "./Reducers/reservReducer";
 import { AvionReducer, HoraReducer, AeropuertoReducer, FechaReducer, ClaseReducer, selectedSeatReducer, srcInputReducer } from "./Reducers/optionReducers";
+import { init, initAeropuerto, initAvion, initClase, initFecha, initHora, initReserv, initSelectedSeat, initSrcInput, initUsr } from "./inits";
 
-const init=()=>{
-    const login = localStorage.getItem("session")
-    if(login==null){
-        return {state: false}
-    }
-    return {state: login}
-}
-
-const initUsr = ()=>{
-    const usr = localStorage.getItem("user")
-    if(usr==null){
-        return {usrState: ""}
-    }
-    return {usrState: usr}
-}
-
-const initReserv = ()=>{
-    const reserv = localStorage.getItem("reservation");
-    if(reserv == null){
-        return {reservState: ""}
-    }
-    return {reservState: reserv}
-}
-
-
-const initAvion = ()=>{
-    const Av = localStorage.getItem("Avion")
-    if(Av == null){
-        return {Avion: ""}
-    }
-    return {Avion: Av}
-}
-const initHora = ()=>{
-    const hr = localStorage.getItem("Hora")
-    if(hr == null){
-        return {Hora: ""}
-    }
-    return {Hora: hr}
-}
-const initAeropuerto = ()=>{
-    const Ae = localStorage.getItem("Aeropuerto")
-    if(Ae == null){
-        return {Aeropuerto: ""}
-    }
-    return {Aeropuerto: Ae}
-}
-const initFecha = ()=>{
-    const Fe = localStorage.getItem("Fecha")
-    if(Fe == null){
-        return {Fecha: ""}
-    }
-    return {Fecha: Fe}
-}
-const initClase = ()=>{
-    const Cl = localStorage.getItem("Clase")
-    if(Cl == null){
-        return {Clase: ""}
-    }
-    return {Clase: Cl}
-}
-const initSelectedSeat= ()=>{
-    const sl = localStorage.getItem("selectedSeat")
-    if(sl == null){
-        return {selectedSeat: ""}
-    }
-    return {selectedSeat: sl}
-}
-
-const initSrcInput= ()=>{
-    const srcA = localStorage.getItem("src")
-    if(srcA == null){
-        return {srcInput: "https://placehold.co/400"}
-    }
-    return {srcInput: srcA}
-}
 
 const Provider = ({children})=>{
+
+    //Todos los datos necesarios para hacer los inicios de sesion, manejo de reservaciones y cambio de foto de perfil
     const [state, dispatchState] = useReducer(reducer, {}, init)
     const [usrState, dispatchUsrState] = useReducer(usrReducer, {}, initUsr)
     const [reservState, dispatchReservState] = useReducer(reservReducer, {}, initReserv)
@@ -95,12 +23,16 @@ const Provider = ({children})=>{
     const [Clase, dispatchClase] = useReducer(ClaseReducer, {}, initClase)
     const [selectedSeat, dispatchSelectedSeat] = useReducer(selectedSeatReducer, {}, initSelectedSeat)
 
+
+    //Con esto se inicia sesion
     const LogIn = (usr)=>{
         localStorage.setItem("session", true)
         localStorage.setItem("user", usr)
         dispatchUsrState({type: "login"})
         dispatchState({type: "login"})
     }
+
+    //Aqui se borran todos los datos de la sesion
     const LogOut = ()=>{
         localStorage.removeItem("user")
         localStorage.removeItem("session")
@@ -112,6 +44,7 @@ const Provider = ({children})=>{
         undoReservation()
     }
 
+    //Con esto se almacenan en el localstorage todos los datos necesarios de la reservacion de vuelo
     const MakeReservation = (place, Avion, Hora, Aeropuerto, Fecha, Clase, selectedSeat)=>{
         localStorage.setItem("reservation", place)
         localStorage.setItem("Avion", Avion)
@@ -129,6 +62,7 @@ const Provider = ({children})=>{
         dispatchSelectedSeat(selectedSeat, {type: "makeReserve"})
     }
 
+    //Con esto se eliminan todos los datos relacionados con la reservacion de vuelo
     const undoReservation = ()=>{
         localStorage.removeItem("reservation")
         localStorage.removeItem("Avion")
@@ -145,6 +79,7 @@ const Provider = ({children})=>{
         dispatchSelectedSeat({type: "undoReserve"})
     }
 
+    //Este es unicamente para la funcionalidad de foto de perfil
     const updatePhoto = (src)=>{
         localStorage.setItem("src", src)
         dispatchSrcInput({type: "update"})

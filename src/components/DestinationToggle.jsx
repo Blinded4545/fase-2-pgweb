@@ -1,16 +1,21 @@
 
 import React, { useState, useContext } from "react";
 import { Accordion, Button, Modal, Form, Toast, ToastContainer} from "react-bootstrap";
-import DatePicker from "react-date-picker"; //Esta libreria se implemento para poder obtener datos de fechas
+//Esta libreria se implemento para poder obtener datos de fechas
+import DatePicker from "react-date-picker"; 
 import loginContext from "../context/LoginContext";
 import "../css/DestinationToggle.css"
 
 const DestinationToggle = ({src="https://placehold.co/100", Place="", Description=""})=>{
 
-    const [showModal, setShowModal] = useState(false)
-    const [showA, setShowA] =useState(false)
     const loggg = useContext(loginContext)
 
+    //Con esto se manejan los modales usados
+    const [showModal, setShowModal] = useState(false)
+    const [showA, setShowA] =useState(false)
+
+
+    //Con esto se extraen todos los datos de la reservacion
     const [Avion, setAvion] = useState("A1")
     const [Hora, setHora] = useState("6AM")
     const [Aeropuerto, setAeropuerto] = useState("El Dorado")
@@ -18,6 +23,7 @@ const DestinationToggle = ({src="https://placehold.co/100", Place="", Descriptio
     const [Clase, setClase] = useState("")
     const [selectedSeat, setSelectedSeat] = useState("")
 
+    //Esto es solo una lista de asientos
     const listSeats = [
         {seat: "A1"}, {seat: "A2"}, {seat: "A3"}, {seat: "A4"}, {seat: "A5"}, {seat: "A6"},
         {seat: "B1"}, {seat: "B2"}, {seat: "B3"}, {seat: "B4"}, {seat: "B5"}, {seat: "B6"},
@@ -25,10 +31,12 @@ const DestinationToggle = ({src="https://placehold.co/100", Place="", Descriptio
         {seat: "D1"}, {seat: "D2"}, {seat: "D3"}, {seat: "D4"}, {seat: "D5"}, {seat: "D6"},
         {seat: "E1"}, {seat: "E2"}, {seat: "E3"}, {seat: "E4"}, {seat: "E5"}, {seat: "E6"}]
 
+    //Con esto se pasan todos los datos necesarios al context para realizar una reservacion de vuelo
     const setReservs = ()=>{
         loggg.MakeReservation(Place, Avion, Hora, Aeropuerto, `${Fecha.getUTCDate()}/${Fecha.getUTCMonth()}/${Fecha.getUTCFullYear()}`, Clase, selectedSeat)
     }
 
+    //Con esto se crea toda la tabla de asientos en el formulario de reserva
     const renderList = listSeats.map(s => {
         return <Button 
             disabled={(s.seat!==selectedSeat && selectedSeat!=="")?true:false}
@@ -90,6 +98,7 @@ const DestinationToggle = ({src="https://placehold.co/100", Place="", Descriptio
                                     </Form.Group>
                                     <Form.Group id="CalendarWrapper" className="w-100">
                                         <Form.Label className="fs-4">Elige la fecha de vuelo</Form.Label>
+                                        {/* Esto es para poder obtener las fechas de un calendario */}
                                         <DatePicker
                                             id="datePicker"
                                             className="h-100 fs-5 text-center gap-5"
@@ -120,6 +129,13 @@ const DestinationToggle = ({src="https://placehold.co/100", Place="", Descriptio
                                         </Form.Label>
                                     </Form.Group>
                                     <Form.Group>
+
+                                        {/* Este boton no funcionara si
+                                            -Ya esta hecha una reserva
+                                            -Falta algun campo del formulario por seleccionar
+                                            -El asiento no ha sido elegido aun
+                                        */}
+
                                         <Button 
                                         disabled={(loggg.reservState==="")? ((selectedSeat!=="")?false:true):true} 
                                         type="Submit" 
@@ -150,7 +166,7 @@ const DestinationToggle = ({src="https://placehold.co/100", Place="", Descriptio
                 </Modal.Footer>
             </Modal>
 
-
+            {/* Con esto se crean todos los acordiones de destino */}
             <Accordion className="accordion-flush accordionCard">
                 <Accordion.Header>
                     <img src={src} alt="" className="AccordionImg"/>
@@ -162,7 +178,7 @@ const DestinationToggle = ({src="https://placehold.co/100", Place="", Descriptio
                 </Accordion.Body>
             </Accordion>
 
-
+            {/* Esta es simplemente una alerta para avisar que no has iniciado sesion y no puedes reservar un vuelo */}
             <ToastContainer position="bottom-end" className="position-fixed mb-5 me-4" style={{ zIndex: 1 }}>
                 <Toast show={showA} onClose={()=>{setShowA(false)}} delay={5000} autohide>
                     <Toast.Header>

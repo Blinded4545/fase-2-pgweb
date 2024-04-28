@@ -17,6 +17,8 @@ const Home = ()=>{
                 <div className="position-absolute z-1 w-100 bg-white opacity-75">
                     <NavBar/>
                 </div>
+
+                {/* Con esto se crea todo el display central */}
                 <div className="h-100 d-flex justify-content-center align-items-center overflow-scroll" id="wrapperA">
                     <div className="container-xl w-100 m-0 p-0 rounded-5" id="content-wrapper">
                         <div className="row w-100 h-100 rounded-5 p-5 d-flex justify-content-center align-items-center opacity-100" id="wrapperB">
@@ -33,6 +35,8 @@ const Home = ()=>{
                                         </button>
                                     </div>
                                 </div>
+
+                                {/* Con esto se crea un carrusel de imagenes */}
                                 <div className="w-auto d-flex flex-wrap justify-content-end align-content-center col" id="CarouselWrapper"> 
                                     <div className="w-auto h-100 d-flex flex-column justify-content-center align-items-center">
                                         <Carousel id="Carousel" className="text-success w-100" indicators={false} prevIcon="⮜" nextIcon="⮞"> 

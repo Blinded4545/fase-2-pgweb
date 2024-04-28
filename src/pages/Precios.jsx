@@ -8,6 +8,7 @@ import "../css/precios.css"
 const Precios = ()=>{
     return (
         <>
+            {/* En esta pagina se muestran los precios y caracteristicas de cada una de las clases de vuelo, mas adelante cuando se tenga el backend cobrara mas importancia */}
             <div className="h-100 w-100">
                 <div className="position-relative w-100">
                     <NavBar/>

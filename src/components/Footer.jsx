@@ -15,6 +15,8 @@ const tooltip = (txt)=>{
 
 const FooterComponent = ()=>{
 
+
+    // Todo esto es para manejar los modales de redes sociales y grupo
     const [showFacebook, setShowFacebook] = useState(false)
     const [showTwitter, setShowTwitter] = useState(false)
     const [showYoutube, setShowYoutube] = useState(false)
@@ -31,6 +33,8 @@ const FooterComponent = ()=>{
 
     return (
         <>
+
+            {/* Con esto se crea todo la barra de footer */}
             <div className="w-100 h-auto d-flex justify-content-center">
                 <div>
                     {/* MODAL SETTING UP */}
@@ -134,7 +138,7 @@ const FooterComponent = ()=>{
                     </Modal>
                     
                     {/* SOCIAL BUTTONS */}
-
+                    {/* Estos son los botones de redes sociales y grupo */}
                     <OverlayTrigger
                         placement="top"
                         overlay={tooltip("Twitter")}

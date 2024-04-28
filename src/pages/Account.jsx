@@ -49,6 +49,8 @@ const AccountPage = ()=>{
                 </Modal.Body>
             </Modal>
 
+
+            {/* Con esto se crea toda la seccion de cuenta */}
             <div className="w-100 h-100 d-flex align-items-center">
                 <div className="w-100 h-auto d-flex align-items-center justify-content-center flex-column"> {/* This is for the image */}
                     <div className="w-100 h-100 d-flex justify-content-center align-items-center flex-column">
@@ -56,6 +58,8 @@ const AccountPage = ()=>{
                         <Button className="my-3 fs-5" onClick={()=>{setShowModal(true)}}>Change profile photo</Button>
                         <h3 className="mb-5">Bienvenido <em><strong>{loggg.usrState}</strong></em></h3>
                     </div>
+
+                    {/* Con esto se muestra la reserva actual y una lista con las caracteristicas de la reserva */}
                     <div className="h-auto">
                         <h2>Reserva actual:</h2>
                         {(loggg.reservState==="")
