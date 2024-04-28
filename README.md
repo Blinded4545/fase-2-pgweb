@@ -2,10 +2,10 @@
 
 Este proyecto fue creado por los estudiantes: 
 
--Angelica Sanabria - 2205564
--Cristian Choperena - 2182190
--Camilo Herrera - 2231530
--Yeison Mayorga - 2210044
+##Angelica Sanabria - 2205564
+##Cristian Choperena - 2182190
+##Camilo Herrera - 2231530
+##Yeison Mayorga - 2210044
 
 Fue creado utilizando el framework de javascript "React", utilizando tambien librerias para la creacion de rutas, implementacion de iconos y facilitacion de estilizado
 
