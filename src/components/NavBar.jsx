@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { useContext } from "react";
 
-// La libreria mdi es usada para importar iconos svg y usarlos de forma mas rapida y eficiente
+// La libreria mdi es usada para importar iconos svg y usarlos de forma rapida y eficiente
 import { mdiEyeClosed, mdiEye } from "@mdi/js";
 import Icon from "@mdi/react";
 
