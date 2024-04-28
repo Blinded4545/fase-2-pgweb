@@ -19,7 +19,7 @@ O bien se puede descargar el proyecto en .zip
 
 Antes de correr el proyecto se debe ejecutar en la terminal el siguiente comando
 
-## `npm install`
+### `npm install`
 
 ## Ejecutar el proyecto
 
