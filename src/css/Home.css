@@ -4,6 +4,56 @@ img{
     height: 16rem;
 }
 
+#homeText{
+    font-size: 3rem;
+    font-style: italic;
+}
+
+#homeText::first-letter{
+    font-size: 4rem;
+}
+
+
+#wrapper{
+    background-image: url("https://fondosmil.co/fondo/31172.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+#content-wrapper{
+    background-color: rgba(237, 237, 237, .4);
+    backdrop-filter: blur(15px);
+}
+
 #Carousel{
     font-size:xx-large;
+}
+
+#buttonMediaScreen{
+    display: none;
+}
+
+@media (max-width: 700px) {
+    img{
+        width: 12rem;
+        height: 12rem;
+    }
+
+    #content-wrapper{
+        height: 100%
+    }
+
+    #wrapperB{
+        gap:5rem;
+        flex-direction: column;
+    }
+
+    #CarouselWrapper{
+        display: none !important;
+    }
+
+    #buttonMediaScreen{
+        display: inline;
+    }
+
 }

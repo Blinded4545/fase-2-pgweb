@@ -1,0 +1,22 @@
+
+.cardClass{
+    width: 50%;
+    margin: 1rem;
+    text-wrap: wrap;
+}
+
+#cardPriceContainer{
+    flex-direction: row;
+}
+
+@media (max-width: 500px) {
+    .cardClass{
+        width: 100%;
+    }
+    #firstCard{
+    }
+
+    #cardPriceContainer{
+        flex-direction: column;
+    }
+}

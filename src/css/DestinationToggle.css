@@ -1,0 +1,48 @@
+
+.AccordionImg{
+    background-color: blue;
+}
+
+#reservModal {
+    min-width: 80%;
+}
+
+.accordionCard{
+    width: 25%
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number]{
+    -moz-appearance: textfield;
+    width: min-content;
+}
+
+.react-date-picker__wrapper{
+    width: 100%
+}
+
+.react-date-picker__inputGroup{
+    width: 100%;
+}
+
+.react-date-picker__inputGroup__input{
+    width: 15% !important; 
+}
+
+#datePicker{
+    width:50%
+}
+
+@media (max-width: 700px) {
+    #datePicker{
+        width:100%
+    }
+    .accordionCard{
+        width: 100%
+    }
+}
