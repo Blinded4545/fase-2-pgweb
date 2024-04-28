@@ -8,7 +8,20 @@ Este proyecto fue creado por los estudiantes:
 
 Fue creado utilizando el framework de javascript "React", utilizando tambien librerias para la creacion de rutas, implementacion de iconos y facilitacion de estilizado
 
-## Available Scripts
+## Descargar el proyecto
+Para descargar el proyecto se debe clonar utilizando el siguiente comando en la terminal
+
+### `git clone https://github.com/Blinded4545/fase-2-pgweb.git`
+
+O bien se puede descargar el proyecto en .zip
+
+## Importante
+
+Antes de correr el proyecto se debe ejecutar en la terminal el siguiente comando
+
+## `npm install`
+
+## Ejecutar el proyecto
 
 El siguiente comando es el utilizado para iniciar la aplicacion
 
