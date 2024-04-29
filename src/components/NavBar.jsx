@@ -23,35 +23,35 @@ const NavBar = ()=>{
             {/* Login Modal and form */}
             <Modal centered show={ShowLoginModal} onHide={()=>{setShowLoginModal(false)}}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Login</Modal.Title>
+                    <Modal.Title>Inicio de sesión</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
                     <Form.Group className="mb-3">
-                        <Form.Label>Username</Form.Label>
+                        <Form.Label>Usuario</Form.Label>
                         <Form.Control required type="text" placeholder="Enter Username" onChange={(e)=>{setUsrInput(e.target.value)}}/>
                     </Form.Group>
 
                     <Form.Group className="mb-3 d-flex flex-column" controlId="formBasicPassword">
-                        <Form.Label>Password</Form.Label>
+                        <Form.Label>Contraseña</Form.Label>
                         <div className="d-inline-flex">
                             <Form.Control required type={showPassword ? "text":"password"} placeholder="Password" />
                             <Button onClick={()=>{setShowPassword(!showPassword)}}>
                                 <Icon path={showPassword ? mdiEye : mdiEyeClosed} size={1}/>
                             </Button>
                             <Form.Control.Feedback type="invalid">
-                                Please insert a password
+                                Por favor, introduce una contraseña.
                             </Form.Control.Feedback>
                         </div>
                     </Form.Group>
                     <Button variant="primary" type="submit" href="/" onClick={()=>{logggg.LogIn(usrInput)}}>
-                        Iniciar Sesion
+                        Iniciar sesión
                     </Button>
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="primary" onClick={()=>{setShowLoginModal(false)}}>
-                        Close
+                        Cerrar
                     </Button>
                 </Modal.Footer>
             </Modal>
@@ -85,11 +85,11 @@ const NavBar = ()=>{
                             drop="left"
                             >
                                 <Dropdown.Item className="fs-4">
-                                    <Link to="/Account" className="m-1 text-decoration-none">Account</Link>
+                                    <Link to="/Account" className="m-1 text-decoration-none">Cuenta</Link>
                                 </Dropdown.Item>
                                 <Dropdown.Item>
                                     <Button className="fs-4" variant="danger" onClick={()=>{logggg.LogOut(); window.location.reload()}}>
-                                        Cerrar sesion
+                                        Cerrar sesión
                                     </Button>
                                 </Dropdown.Item>
                             </DropdownButton>
@@ -103,7 +103,7 @@ const NavBar = ()=>{
                             className="p-2 w-auto h-auto size-1.5"
                             drop="left"
                             > 
-                                <Dropdown.Item onClick={()=>{setShowLoginModal(true)}} className="fs-4">Iniciar sesion</Dropdown.Item>
+                                <Dropdown.Item onClick={()=>{setShowLoginModal(true)}} className="fs-4">Iniciar sesión</Dropdown.Item>
                             </DropdownButton>
                             }
                     </li>                    

@@ -1,7 +1,7 @@
 
 import React from "react";
 import NavBar from "../components/NavBar";
-import image from "../assets/logo.jpeg";
+import image from "../assets/AEROVIAJES (1).png";
 import { Link } from "react-router-dom";
 import { Carousel } from "react-bootstrap";
 import DestinyHomeCard from "../components/DestinyHomeCard";
@@ -27,11 +27,11 @@ const Home = ()=>{
                                 </div>
                                 <div className="w-100 text-break text-wrap col text-center">
                                     <h3 id="homeText">
-                                        Un viaje mas relajado al alcance de tu mano, solo un par de clicks y habras hecho una reserva de avion.
+                                        Bienvenido a Aeroviajes: Tu puerta de entrada al mundo. ¡Descubre, reserva y vuela con nosotros hacia nuevas aventuras!
                                     </h3>   
                                     <div className="h-auto" id="buttonMediaScreen">
                                         <button className="rounded-4 p-3 my-3">
-                                            <Link to="/Destinos" className="text-decoration-none text-primary fs-3">Mira todos nuestros destinos!</Link>
+                                            <Link to="/Destinos" className="text-decoration-none text-primary fs-3">¡Mira todos nuestros destinos!</Link>
                                         </button>
                                     </div>
                                 </div>
@@ -52,7 +52,7 @@ const Home = ()=>{
                                         </Carousel>
                                         <div className="h-full">
                                             <button className="rounded-4 p-3 my-3">
-                                                <Link to="/Destinos" className="text-decoration-none text-primary fs-3">Mira todos nuestros destinos!</Link>
+                                                <Link to="/Destinos" className="text-decoration-none text-primary fs-3">¡Mira todos nuestros destinos!</Link>
                                             </button>
                                         </div>
                                     </div>

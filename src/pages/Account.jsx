@@ -33,17 +33,17 @@ const AccountPage = ()=>{
             {/* Change photo */}
             <Modal centered show={showModal} onHide={hideModal}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Change profile photo</Modal.Title>
+                    <Modal.Title>Cambiar foto de perfil</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
                         <Form.Group controlId="form-group-id">
                             <Form.Label>Link</Form.Label>
                             <Form.Control onChange={(e)=>{setSrcInput(e.target.value)}} type="text"></Form.Control>
-                            <Form.Text className="fs-5">Introduce a web image link, otherwise it will not work.<br></br>It may take a few seconds.</Form.Text>
+                            <Form.Text className="fs-5">Introduce un link a una imagen online, de otra forma no funcionara.<br></br>PPuede tardar algunos segundos.</Form.Text>
                         </Form.Group>
                         <Form.Group>
-                            <Button type="submit" onClick={hideModal} className="fs-4">Change</Button>
+                            <Button type="submit" onClick={hideModal} className="fs-4">Cambiar</Button>
                         </Form.Group>
                     </Form>
                 </Modal.Body>
@@ -55,7 +55,7 @@ const AccountPage = ()=>{
                 <div className="w-100 h-auto d-flex align-items-center justify-content-center flex-column"> {/* This is for the image */}
                     <div className="w-100 h-100 d-flex justify-content-center align-items-center flex-column">
                         <img className="rounded-circle" src={loggg.srcInput} alt=""/>
-                        <Button className="my-3 fs-5" onClick={()=>{setShowModal(true)}}>Change profile photo</Button>
+                        <Button className="my-3 fs-5" onClick={()=>{setShowModal(true)}}>Cambia la foto de perfil</Button>
                         <h3 className="mb-5">Bienvenido <em><strong>{loggg.usrState}</strong></em></h3>
                     </div>
 
@@ -64,13 +64,13 @@ const AccountPage = ()=>{
                         <h2>Reserva actual:</h2>
                         {(loggg.reservState==="")
                         ?
-                        <h3>Actualmente no tienes ninguna reserva hecha</h3>
+                        <h3>Actualmente, no tienes ninguna reserva hecha</h3>
                         :
                         <> 
-                            <h3>Actualmente tienes una reserva de vuelo hacia {loggg.reservState}</h3>
+                            <h3>Actualmente, tienes una reserva de vuelo hacia {loggg.reservState}</h3>
                             <h4>Especificaciones</h4>
                             <ListGroup className="fs-5">
-                                <ListGroup.Item>Avion: {loggg.Avion}</ListGroup.Item>
+                                <ListGroup.Item>Avión: {loggg.Avion}</ListGroup.Item>
                                 <ListGroup.Item>Hora: {loggg.Hora}</ListGroup.Item>
                                 <ListGroup.Item>Aeropuerto: {loggg.Aeropuerto}</ListGroup.Item>
                                 <ListGroup.Item>Fecha: {loggg.Fecha}</ListGroup.Item>

@@ -71,7 +71,7 @@ const DestinationToggle = ({src="https://placehold.co/100", Place="", Descriptio
 
                                 <Form className="w-100 m-0">
                                     <Form.Group controlId="form-group-id">
-                                        <Form.Label className="fs-4">Avion</Form.Label> 
+                                        <Form.Label className="fs-4">Avión</Form.Label> 
                                         <Form.Select className="fs-5`" onChange={(e)=>{setAvion(e.target.value)}}>
                                             <option value="A1">A1</option>
                                             <option value="B2">B2</option>
@@ -90,10 +90,10 @@ const DestinationToggle = ({src="https://placehold.co/100", Place="", Descriptio
                                     <Form.Group controlId="form-group-id">
                                         <Form.Label className="fs-4">Aeropuerto de salida</Form.Label>
                                         <Form.Select className="fs-5" onChange={(e)=>{setAeropuerto(e.target.value)}}>
-                                            <option value="El Dorado">El Dorado - Bogota</option>
+                                            <option value="El Dorado">El Dorado - Bogotá</option>
                                             <option value="Palo Negro">Palo Negro - Bucaramanga</option>
-                                            <option value="Jose Maria Cordova">Jose Maria Cordova - Medellin</option>
-                                            <option value="Alfonso Bonilla Aragon">Alfonso Bonilla Aragon - Cali</option>
+                                            <option value="Jose Maria Cordova">Jose María Cordova - Medellín</option>
+                                            <option value="Alfonso Bonilla Aragon">Alfonso Bonilla Aragón - Cali</option>
                                         </Form.Select>
                                     </Form.Group>
                                     <Form.Group id="CalendarWrapper" className="w-100">
@@ -113,7 +113,7 @@ const DestinationToggle = ({src="https://placehold.co/100", Place="", Descriptio
                                             }}
                                             value={Fecha}
                                         ></DatePicker>
-                                        <Form.Text>Recuerda que no puedes poner fechas anteriores al dia de hoy</Form.Text>
+                                        <Form.Text>Recuerda que no puedes poner fechas anteriores al día de hoy</Form.Text>
                                     </Form.Group>
                                     <Form.Group controlId="form-group-id" className="d-inline">
                                         <Form.Label className="fs-4">Clase de vuelo</Form.Label>
@@ -152,7 +152,7 @@ const DestinationToggle = ({src="https://placehold.co/100", Place="", Descriptio
                                         <></>}
                                     </Form.Group>
                                     <Form.Group>
-                                        {(loggg.reservState!=="")?<Form.Text className="fs-5 text-danger"><strong>Ya hiciste una reservacion.</strong></Form.Text>:<></>}
+                                        {(loggg.reservState!=="")?<Form.Text className="fs-5 text-danger"><strong>Ya hiciste una reservación.</strong></Form.Text>:<></>}
                                     </Form.Group>
                                 </Form>
                             </div>
@@ -161,7 +161,7 @@ const DestinationToggle = ({src="https://placehold.co/100", Place="", Descriptio
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleCloseModal}>
-                        Close
+                        Cerrar
                     </Button>
                 </Modal.Footer>
             </Modal>
@@ -184,7 +184,7 @@ const DestinationToggle = ({src="https://placehold.co/100", Place="", Descriptio
                     <Toast.Header>
                         <strong className="me-auto text-danger fs-3">Error</strong>
                     </Toast.Header>
-                    <Toast.Body className="fs-4">Debes iniciar sesion para poder hacer una reserva</Toast.Body>
+                    <Toast.Body className="fs-4">Debes iniciar sesión para poder hacer una reserva</Toast.Body>
                 </Toast>
             </ToastContainer>
         </>

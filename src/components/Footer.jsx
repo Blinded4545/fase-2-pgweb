@@ -53,7 +53,7 @@ const FooterComponent = ()=>{
                         </Modal.Body>
                         <Modal.Footer>
                             <Button variant="secondary" onClick={handleCloseModal}>
-                                Close
+                                Cerrar 
                             </Button>
                         </Modal.Footer>
                     </Modal>
@@ -72,7 +72,7 @@ const FooterComponent = ()=>{
                         </Modal.Body>
                         <Modal.Footer>
                             <Button variant="secondary" onClick={handleCloseModal}>
-                                Close
+                                Cerrar
                             </Button>
                         </Modal.Footer>
                     </Modal>
@@ -89,7 +89,7 @@ const FooterComponent = ()=>{
                         </Modal.Body>
                         <Modal.Footer>
                             <Button variant="secondary" onClick={handleCloseModal}>
-                                Close
+                                Cerrar
                             </Button>
                         </Modal.Footer>
                     </Modal>
@@ -111,7 +111,7 @@ const FooterComponent = ()=>{
                         </Modal.Body>
                         <Modal.Footer>
                             <Button variant="secondary" onClick={handleCloseModal}>
-                                Close
+                                Cerrar
                             </Button>
                         </Modal.Footer>
                     </Modal>
@@ -132,7 +132,7 @@ const FooterComponent = ()=>{
                         </Modal.Body>
                         <Modal.Footer>
                             <Button variant="secondary" onClick={handleCloseModal}>
-                                Close
+                                Cerrar
                             </Button>
                         </Modal.Footer>
                     </Modal>
