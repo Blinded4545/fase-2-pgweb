@@ -1,7 +1,10 @@
+
+import Cookies from 'js-cookie';
+
 //Aqui se encuentran todos los inits
 
 export const init=()=>{
-    const login = localStorage.getItem("session")
+    const login = Cookies.get("Username")
     if(login==null){
         return {state: false}
     }
@@ -9,7 +12,7 @@ export const init=()=>{
 }
 
 export const initUsr = ()=>{
-    const usr = localStorage.getItem("user")
+    const usr = Cookies.get("Username")
     if(usr==null){
         return {usrState: ""}
     }
@@ -17,7 +20,7 @@ export const initUsr = ()=>{
 }
 
 export const initReserv = ()=>{
-    const reserv = localStorage.getItem("reservation");
+    const reserv = localStorage.getItem("reserv");
     if(reserv == null){
         return {reservState: ""}
     }
@@ -74,7 +77,7 @@ export const initSelectedSeat= ()=>{
 }
 
 export const initSrcInput= ()=>{
-    const srcA = localStorage.getItem("src")
+    const srcA = Cookies.get("profilePhoto")
     if(srcA == null){
         return {srcInput: "https://placehold.co/400"}
     }

@@ -7,14 +7,16 @@ import { Accordion } from "react-bootstrap";
 // PREGUNTAS FRECUENTES
 
 const FAQ = ()=>{
+
+
     return (
 
         // Esta es solo la seccion de preguntas frecuentes, dado que son pocas se opto por crear cada acordion individualmente
         <div className="h-100">
-            <div className="position-relative sticky-top w-100">
+            <div className="position-absolute sticky-top w-100">
                 <NavBar/>
             </div>
-            <div className="w-100 h-100 d-flex justify-content-center align-items-center" id="faqWrapper">
+            <div className="w-100 h-100 d-flex justify-content-center align-items-center" id="faqWrapper" style={{"backgroundColor": "#EDEDED"}}>
 
                 <div className="h-auto w-75 bg-white rounded border border-solid border-secondary">
                     <h1 className="m-3">Preguntas Frecuentes</h1>

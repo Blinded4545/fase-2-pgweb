@@ -26,18 +26,18 @@ const Provider = ({children})=>{
 
     //Con esto se inicia sesion
     const LogIn = (usr)=>{
-        localStorage.setItem("session", true)
-        localStorage.setItem("user", usr)
         dispatchUsrState({type: "login"})
         dispatchState({type: "login"})
     }
 
     //Aqui se borran todos los datos de la sesion
-    const LogOut = ()=>{
-        localStorage.removeItem("user")
-        localStorage.removeItem("session")
-        localStorage.removeItem("reservation")
-        localStorage.removeItem("src")
+    const LogOut = async ()=>{
+        await fetch("http://localhost:8000/logout", {
+            method: "POST",
+            credentials: "include",
+        }).then(res=>{
+            window.location.reload()
+        })
         dispatchSrcInput({type: "undo"})
         dispatchUsrState({type: "logout"})
         dispatchState({type: "logout"})
@@ -80,8 +80,7 @@ const Provider = ({children})=>{
     }
 
     //Este es unicamente para la funcionalidad de foto de perfil
-    const updatePhoto = (src)=>{
-        localStorage.setItem("src", src)
+    const updatePhoto = async (src)=>{
         dispatchSrcInput({type: "update"})
         console.log(src)
     }

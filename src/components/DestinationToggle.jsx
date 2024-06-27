@@ -5,6 +5,7 @@ import { Accordion, Button, Modal, Form, Toast, ToastContainer} from "react-boot
 import DatePicker from "react-date-picker"; 
 import loginContext from "../context/LoginContext";
 import "../css/DestinationToggle.css"
+import { Link } from "react-router-dom";
 
 const DestinationToggle = ({src="https://placehold.co/100", Place="", Description=""})=>{
 
@@ -174,7 +175,12 @@ const DestinationToggle = ({src="https://placehold.co/100", Place="", Descriptio
                 </Accordion.Header>
                 <Accordion.Body className="h-auto">
                     <p className="fs-4">{Description}</p>
-                    <Button className="fs-3" onClick={()=>{loggg.state?setShowModal(true):setShowA(true)}}>Reserva un vuelo</Button>
+                    <div>
+                        <Button className="fs-3" onClick={()=>{loggg.state?setShowModal(true):setShowA(true)}}>Reserva un vuelo</Button>
+                        <Button className="mx-2 fs-3">
+                            <Link state={{dest: Place}} to="/Gallery" className="text-white text-decoration-none">Ver imagenes</Link>
+                        </Button>
+                    </div>
                 </Accordion.Body>
             </Accordion>
 

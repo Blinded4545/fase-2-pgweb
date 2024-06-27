@@ -15,8 +15,39 @@ const NavBar = ()=>{
     const logggg = useContext(loginContext)
 
     const [usrInput, setUsrInput] = useState("")
+    const [emailInput, setEmailInput] = useState("")
+    const [pwdInput, setPwdInput] = useState("")
+    const [recoveryPassword, setRecoveryPassword] = useState(false)
     const [ShowLoginModal, setShowLoginModal] = useState(false)
+    const [ShowRegisterModal, setShowRegisterModal] = useState(false)
     const [showPassword, setShowPassword] = useState(false)
+
+    const logInFunc = async ()=>{
+        //En caso de que el backend este en otro puerto, reemplazar el 8000 por ese puerto
+        await fetch("http://localhost:8000/login", {
+            method: "POST",
+            credentials: "include",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({usr: usrInput, pwd: pwdInput})
+        }).then(res=>{
+            if(res.status===401){
+                console.log("Username or Password mismatch");
+            }else if(res.status===200){
+                console.log("LoggedIn");
+                logggg.LogIn(usrInput)
+                window.location.reload()
+            }
+        })
+    }
+
+    const registerFunc = async ()=>{
+        await fetch("http://localhost:8000/reg", {
+            method: "POST",
+            credentials: "same-origin",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({usr: usrInput, email: emailInput, pwd: pwdInput})
+        }).then(res=>console.log(res)).catch(err=>console.log(err))
+    }
 
     return (
         <>
@@ -35,7 +66,7 @@ const NavBar = ()=>{
                     <Form.Group className="mb-3 d-flex flex-column" controlId="formBasicPassword">
                         <Form.Label>Contraseña</Form.Label>
                         <div className="d-inline-flex">
-                            <Form.Control required type={showPassword ? "text":"password"} placeholder="Password" />
+                            <Form.Control required type={showPassword ? "text":"password"} placeholder="Password" onChange={(e)=>{setPwdInput(e.target.value)}} />
                             <Button onClick={()=>{setShowPassword(!showPassword)}}>
                                 <Icon path={showPassword ? mdiEye : mdiEyeClosed} size={1}/>
                             </Button>
@@ -44,13 +75,67 @@ const NavBar = ()=>{
                             </Form.Control.Feedback>
                         </div>
                     </Form.Group>
-                    <Button variant="primary" type="submit" href="/" onClick={()=>{logggg.LogIn(usrInput)}}>
+                    <Button variant="primary" type="submit" href="/" onClick={(e)=>{
+                        e.preventDefault()
+                        logInFunc()
+                    }}>
                         Iniciar sesión
+                    </Button>
+                    <Button className="mx-3" variant="primary" type="submit" href="/" onClick={(e)=>{
+                        e.preventDefault()
+                        logInFunc()
+                    }}>
+                        Recuperar Contraseña
                     </Button>
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="primary" onClick={()=>{setShowLoginModal(false)}}>
+                        Cerrar
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+            
+            
+            {/* Register Modal */}
+            <Modal centered show={ShowRegisterModal} onHide={()=>{setShowRegisterModal(false)}}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Registrarse</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Usuario</Form.Label>
+                        <Form.Control required type="text" placeholder="Enter Username" onChange={(e)=>{setUsrInput(e.target.value)}}/>
+                    </Form.Group>
+
+                    <Form.Group className="mb-3">
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control required type="text" placeholder="Enter Email" onChange={(e)=>{setEmailInput(e.target.value)}}/>
+                    </Form.Group>
+
+                    <Form.Group className="mb-3 d-flex flex-column" controlId="formBasicPassword">
+                        <Form.Label>Contraseña</Form.Label>
+                        <div className="d-inline-flex">
+                            <Form.Control required type={showPassword ? "text":"password"} placeholder="Password" onChange={(e)=>{setPwdInput(e.target.value)}} />
+                            <Button onClick={()=>{setShowPassword(!showPassword)}}>
+                                <Icon path={showPassword ? mdiEye : mdiEyeClosed} size={1}/>
+                            </Button>
+                            <Form.Control.Feedback type="invalid">
+                                Por favor, introduce una contraseña.
+                            </Form.Control.Feedback>
+                        </div>
+                    </Form.Group>
+                    <Button variant="primary" type="submit" href="/" onClick={(e)=>{
+                        e.preventDefault()
+                        registerFunc()
+                    }}>
+                        Registrarse
+                    </Button>
+                    </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="primary" onClick={()=>{setShowRegisterModal(false)}}>
                         Cerrar
                     </Button>
                 </Modal.Footer>
@@ -88,7 +173,9 @@ const NavBar = ()=>{
                                     <Link to="/Account" className="m-1 text-decoration-none">Cuenta</Link>
                                 </Dropdown.Item>
                                 <Dropdown.Item>
-                                    <Button className="fs-4" variant="danger" onClick={()=>{logggg.LogOut(); window.location.reload()}}>
+                                    <Button className="fs-4" variant="danger" onClick={()=>{
+                                        logggg.LogOut(); 
+                                        }}>
                                         Cerrar sesión
                                     </Button>
                                 </Dropdown.Item>
@@ -104,6 +191,7 @@ const NavBar = ()=>{
                             drop="left"
                             > 
                                 <Dropdown.Item onClick={()=>{setShowLoginModal(true)}} className="fs-4">Iniciar sesión</Dropdown.Item>
+                                <Dropdown.Item onClick={()=>{setShowRegisterModal(true)}} className="fs-4">Registrarse</Dropdown.Item>
                             </DropdownButton>
                             }
                     </li>                    

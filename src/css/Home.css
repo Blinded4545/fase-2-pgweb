@@ -13,6 +13,11 @@ img{
     font-size: 4rem;
 }
 
+#imgWrapper{
+    max-width: max-content;
+    margin-left: 4rem;
+    margin-right: 4rem;
+}
 
 #wrapper{
     background-image: url("https://fondosmil.co/fondo/31172.jpg");

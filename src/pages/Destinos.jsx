@@ -10,15 +10,15 @@ const Destinos = ()=>{
             <div className="h-100 w-100">
                 <NavBar/>
 
-                <div id="destinationHandler" className="h-100 w-100 d-flex justify-content-center align-items-center flex-wrap overflow-scroll my-5 p-2"> {/* Here will be all the Destinations */}
+                <div id="destinationHandler" className="h-100 w-100 d-flex justify-content-center align-items-center flex-wrap overflow-scroll" style={{"backgroundColor": "#EDEDED"}}> {/* Here will be all the Destinations */}
 
                     {/* Vuelos nacionales */}
-                    <div className="w-100 h-auto d-flex flex-column gap-5 align-items-center">   
+                    <div className="w-100 mt-5 h-auto d-flex flex-column gap-5 align-items-center">   
                         <h1 className="d-inline">Vuelos Nacionales</h1>
-                        <div className="d-flex w-100 gap-3 flex-wrap justify-content-center">
+                        <div className="d-flex w-auto gap-3 flex-wrap justify-content-center">
                             {/* Con esto se crean todos los acordiones de destinos */}
                             <DestinationToggle src="https://media-cdn.tripadvisor.com/media/photo-c/1280x250/09/a2/58/15/plaza-san-nicolas.jpg" Place="Barranquilla" Description="Explora la belleza costera de Barranquilla, Colombia. Desde sus playas doradas hasta su bullicioso carnaval, esta ciudad te sorprenderá con su encanto tropical y su rica historia. ¡Déjate cautivar por la esencia caribeña de Barranquilla!"></DestinationToggle>
-                            <DestinationToggle src="https://shorturl.at/ehmGO" Place="Bogotá" Description="Descubre la vibrante Bogotá.. Desde su fascinante arquitectura colonial hasta su escena cultural en constante evolución, la capital te espera con experiencias únicas y paisajes urbanos cautivadores."></DestinationToggle>
+                            <DestinationToggle src="../assets/bogota.jpg" Place="Bogotá" Description="Descubre la vibrante Bogotá.. Desde su fascinante arquitectura colonial hasta su escena cultural en constante evolución, la capital te espera con experiencias únicas y paisajes urbanos cautivadores."></DestinationToggle>
                             <DestinationToggle src="https://shorturl.at/afjN3" Place="Cali" Description="Explora la energía contagiosa de Cali. Conocida como la capital de la salsa, esta ciudad te invita a bailar al ritmo de la música, a disfrutar de su deliciosa gastronomía y a maravillarte con sus paisajes montañosos. ¡Cali te espera con los brazos abiertos!"></DestinationToggle>
                             <DestinationToggle src="https://shorturl.at/fgCT2" Place="Cartagena" Description="Cartagena tiene más de 5 complejos de islas a su alrededor que a su vez proporcionan más de 20 playas para visitar y disfrutar. La arena blanca, las palmeras, la brisa del mar y en algunos casos los arrecifes de coral, te darán la bienvenida a estos paraísos de descanso."></DestinationToggle>
                             <DestinationToggle src="https://shorturl.at/rEJL5" Place="Medellín" Description="Medellín ha emergido como la Ciudad de la Eterna Primavera, con un clima templado que la convierte en un destino ideal para las actividades al aire libre en Antioquia. Sumérjase en la comida callejera, los mercados y el arte público en un recorrido turístico ademas de visitar la plaza de Botero."></DestinationToggle>
@@ -26,9 +26,9 @@ const Destinos = ()=>{
                         </div>
                     </div>
 
-                    {/* Vuelos nacionales */}
-                    <div className="w-100 my-5 d-flex flex-column gap-5 align-items-center">   
-                        <h1 className="d-inline">Vuelos Internacionales</h1>
+                    {/* Vuelos internacionales */}
+                    <div className="w-100 h-auto mb-5 d-flex flex-column gap-5 align-items-center">   
+                        <h1 className="d-inline mt-5">Vuelos Internacionales</h1>
                         <div className="w-auto d-flex gap-3 flex-wrap justify-content-center">
                             {/* Con esto se crean todos los acordiones de destinos */}
                             <DestinationToggle src="https://vectorflags.s3.amazonaws.com/flags/de-square-01.png" Place="Alemania" Description="¡Descubre Alemania! donde historia, modernidad y tradición se encuentran. Desde los bulliciosos mercados de Berlín hasta los paisajes de cuento de Baviera, cada lugar te cautivará. Sumérgete en su rica cultura, saborea su deliciosa gastronomía y déjate llevar por la magia de este país único en Europa."></DestinationToggle>
@@ -42,7 +42,7 @@ const Destinos = ()=>{
 
                 </div>
 
-                <div className="bg-white opacity-75 position-relative sticky-bottom w-100">
+                <div className="bg-white position-relative sticky-bottom w-100 h-auto">
                     <FooterComponent className=""/>
                 </div>
             </div>

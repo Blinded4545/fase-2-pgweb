@@ -12,10 +12,16 @@ const AccountPage = ()=>{
     const [srcInputLink, setSrcInput] = useState("https://placehold.co/400")
     const [showModal, setShowModal] = useState(false)
 
-    const hideModal = ()=>{
+    const hideModal = async ()=>{
         setShowModal(false)
         if(srcInputLink!==""){
-            loggg.updatePhoto(srcInputLink)
+            await fetch("http://localhost:8000/changePFP", {
+                method: "POST",
+                credentials: "include",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({usr: loggg.usrState, photoURL: srcInputLink})
+            }).then(res=>{console.log(res);})
+            window.location.reload()
         }
     }
 
@@ -39,11 +45,17 @@ const AccountPage = ()=>{
                     <Form>
                         <Form.Group controlId="form-group-id">
                             <Form.Label>Link</Form.Label>
-                            <Form.Control onChange={(e)=>{setSrcInput(e.target.value)}} type="text"></Form.Control>
-                            <Form.Text className="fs-5">Introduce un link a una imagen online, de otra forma no funcionara.<br></br>PPuede tardar algunos segundos.</Form.Text>
+                            <Form.Control onChange={(e)=>{
+                                setSrcInput(e.target.value)
+                                }} type="text"></Form.Control>
+                            <Form.Text className="fs-5">Introduce un link a una imagen online, de otra forma no funcionara.<br></br>Puede tardar algunos segundos.</Form.Text>
+                            <Form.Text className="fs-5"><br></br>Ejemplo: https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/384cb129896105.56ed80e1d4666.jpg</Form.Text>
                         </Form.Group>
                         <Form.Group>
-                            <Button type="submit" onClick={hideModal} className="fs-4">Cambiar</Button>
+                            <Button type="submit" onClick={(e)=>{
+                                e.preventDefault()
+                                hideModal()
+                            }} className="fs-4">Cambiar</Button>
                         </Form.Group>
                     </Form>
                 </Modal.Body>

@@ -22,18 +22,16 @@ const Home = ()=>{
                 <div className="h-100 d-flex justify-content-center align-items-center overflow-scroll" id="wrapperA">
                     <div className="container-xl w-100 m-0 p-0 rounded-5" id="content-wrapper">
                         <div className="row w-100 h-100 rounded-5 p-5 d-flex justify-content-center align-items-center opacity-100" id="wrapperB">
-                                <div className="w-100 h-50 col d-flex justify-content-center align-items-center">
-                                    <img src={image} alt="" className="rounded-3" style={{scale: "1.4"}}/>
+                                <div className="w-100 h-50 col d-flex justify-content-center align-items-center" id="imgWrapper">
+                                    <img src={image} alt="" className="rounded-3" style={{scale: "1.5"}}/>
                                 </div>
-                                <div className="w-100 text-break text-wrap col text-center">
-                                    <h3 id="homeText">
-                                        Bienvenido a Aeroviajes: Tu puerta de entrada al mundo. ¡Descubre, reserva y vuela con nosotros hacia nuevas aventuras!
-                                    </h3>   
-                                    <div className="h-auto" id="buttonMediaScreen">
-                                        <button className="rounded-4 p-3 my-3">
-                                            <Link to="/Destinos" className="text-decoration-none text-primary fs-3">¡Mira todos nuestros destinos!</Link>
-                                        </button>
-                                    </div>
+                                <h3 id="homeText" className="col mx-5 text-wrap">
+                                    Bienvenido a Aeroviajes: Tu puerta de entrada al mundo. ¡Descubre, reserva y vuela con nosotros hacia nuevas aventuras!
+                                </h3>   
+                                <div className="h-auto col" id="buttonMediaScreen">
+                                    <button className="rounded-4 p-3 my-3">
+                                        <Link to="/Destinos" className="text-decoration-none text-primary fs-3">¡Mira todos nuestros destinos!</Link>
+                                    </button>
                                 </div>
 
                                 {/* Con esto se crea un carrusel de imagenes */}

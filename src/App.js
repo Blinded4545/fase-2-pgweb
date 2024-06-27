@@ -9,6 +9,7 @@ import AccountPage from './pages/Account';
 import NoPage from './pages/NoPage';
 import PrivateRoute from './routes/PrivateRoute';
 import PublicRoute from './routes/PublicRoute';
+import Gallery from './pages/Galeria';
 
 function App() {
   return (
@@ -43,6 +44,16 @@ function App() {
           <Route path="/Account" element={
             <PrivateRoute>
               <AccountPage/>
+            </PrivateRoute>
+          }></Route>
+          <Route path="/Gallery" element={
+            <PrivateRoute>
+              <Gallery/>
+            </PrivateRoute>
+          }></Route>
+          <Route path="/Menu" element={
+            <PrivateRoute>
+              <Gallery/>
             </PrivateRoute>
           }></Route>
           <Route path="/noPage" element={<NoPage/>}></Route>
