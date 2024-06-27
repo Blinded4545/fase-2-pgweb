@@ -21,9 +21,12 @@ const NavBar = ()=>{
     const [ShowLoginModal, setShowLoginModal] = useState(false)
     const [ShowRegisterModal, setShowRegisterModal] = useState(false)
     const [showPassword, setShowPassword] = useState(false)
+    const [clickedLogIn, setClickedLogIn] = useState(false)
+    const [validLogIn, setValidLogIn] = useState()
 
     const logInFunc = async ()=>{
         //En caso de que el backend este en otro puerto, reemplazar el 8000 por ese puerto
+        setClickedLogIn(true)
         await fetch("http://localhost:8000/login", {
             method: "POST",
             credentials: "include",
@@ -32,9 +35,11 @@ const NavBar = ()=>{
         }).then(res=>{
             if(res.status===401){
                 console.log("Username or Password mismatch");
+                setValidLogIn(false)
             }else if(res.status===200){
                 console.log("LoggedIn");
                 logggg.LogIn(usrInput)
+                setClickedLogIn(false)
                 window.location.reload()
             }
         })
@@ -75,11 +80,24 @@ const NavBar = ()=>{
                             </Form.Control.Feedback>
                         </div>
                     </Form.Group>
+                    {
+                        (validLogIn)
+                        ?
+                        <div className="bg-danger text-white">Username or password mismatch</div>
+                        :
+                        <></>
+                    }
                     <Button variant="primary" type="submit" href="/" onClick={(e)=>{
                         e.preventDefault()
                         logInFunc()
                     }}>
-                        Iniciar sesión
+                        {
+                            (!clickedLogIn)
+                            ?
+                            <>Iniciar sesión</>
+                            :
+                            <>Cargando...</>
+                        }
                     </Button>
                     <Button className="mx-3" variant="primary" type="submit" href="/" onClick={(e)=>{
                         e.preventDefault()

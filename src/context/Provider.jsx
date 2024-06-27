@@ -5,8 +5,8 @@ import loginContext from "./LoginContext";
 import reducer from "./Reducers/Reducer";
 import usrReducer from "./Reducers/usrReducer"
 import reservReducer from "./Reducers/reservReducer";
-import { AvionReducer, HoraReducer, AeropuertoReducer, FechaReducer, ClaseReducer, selectedSeatReducer, srcInputReducer } from "./Reducers/optionReducers";
-import { init, initAeropuerto, initAvion, initClase, initFecha, initHora, initReserv, initSelectedSeat, initSrcInput, initUsr } from "./inits";
+import { srcInputReducer, reserveDetailsReducer } from "./Reducers/optionReducers";
+import { init, initReserv, initSrcInput, initUsr, initReserveDetails } from "./inits";
 
 
 const Provider = ({children})=>{
@@ -16,16 +16,11 @@ const Provider = ({children})=>{
     const [usrState, dispatchUsrState] = useReducer(usrReducer, {}, initUsr)
     const [reservState, dispatchReservState] = useReducer(reservReducer, {}, initReserv)
     const [srcInput, dispatchSrcInput] = useReducer(srcInputReducer, {}, initSrcInput)
-    const [Avion, dispatchAvion] = useReducer(AvionReducer, {}, initAvion)
-    const [Hora, dispatchHora] = useReducer(HoraReducer, {}, initHora)
-    const [Aeropuerto, dispatchAeropuerto] = useReducer(AeropuertoReducer, {}, initAeropuerto)
-    const [Fecha, dispatchFecha] = useReducer(FechaReducer, {}, initFecha)
-    const [Clase, dispatchClase] = useReducer(ClaseReducer, {}, initClase)
-    const [selectedSeat, dispatchSelectedSeat] = useReducer(selectedSeatReducer, {}, initSelectedSeat)
+    const [reserveDetails, dispatchReserveDetails] = useReducer(reserveDetailsReducer, {}, initReserveDetails)
 
 
     //Con esto se inicia sesion
-    const LogIn = (usr)=>{
+    const LogIn = ()=>{
         dispatchUsrState({type: "login"})
         dispatchState({type: "login"})
     }
@@ -46,37 +41,27 @@ const Provider = ({children})=>{
 
     //Con esto se almacenan en el localstorage todos los datos necesarios de la reservacion de vuelo
     const MakeReservation = (place, Avion, Hora, Aeropuerto, Fecha, Clase, selectedSeat)=>{
-        localStorage.setItem("reservation", place)
-        localStorage.setItem("Avion", Avion)
-        localStorage.setItem("Hora", Hora)
-        localStorage.setItem("Aeropuerto", Aeropuerto)
-        localStorage.setItem("Fecha", Fecha)
-        localStorage.setItem("Clase", Clase)
-        localStorage.setItem("selectedSeat", selectedSeat)
+        const ReservDet = `${place}.${Avion}.${Hora}.${Aeropuerto}.${Fecha}.${Clase}.${selectedSeat}`
+        
+        console.log(ReservDet);
+
+        fetch("http://localhost:8000/makeReservation", { //Enviar detalles de reservacion al backend
+            method: "PUT",
+            credentials: "include",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({reservDetails: ReservDet, usr: state})
+        }).then(res=>console.log(res)).catch(err=>console.log(err))
+
         dispatchReservState({type: "makeReserve"})
-        dispatchAvion(Avion, {type: "makeReserve"})
-        dispatchHora(Hora, {type: "makeReserve"})
-        dispatchAeropuerto(Aeropuerto, {type: "makeReserve"})
-        dispatchFecha(Fecha, {type: "makeReserve"})
-        dispatchClase(Clase, {type: "makeReserve"})
-        dispatchSelectedSeat(selectedSeat, {type: "makeReserve"})
+        dispatchReserveDetails(ReservDet, {type: "makeReserve"})
+        
     }
 
     //Con esto se eliminan todos los datos relacionados con la reservacion de vuelo
     const undoReservation = ()=>{
-        localStorage.removeItem("reservation")
-        localStorage.removeItem("Avion")
-        localStorage.removeItem("Hora")
-        localStorage.removeItem("Aeropuerto")
-        localStorage.removeItem("Fecha")
-        localStorage.removeItem("Clase")
-        localStorage.removeItem("selectedSeat")
+        
         dispatchReservState({type: "undo"})
-        dispatchAvion({type: "undoReserve"})
-        dispatchHora({type: "undoReserve"})
-        dispatchAeropuerto({type: "undoReserve"})
-        dispatchClase({type: "undoReserve"})
-        dispatchSelectedSeat({type: "undoReserve"})
+        dispatchReserveDetails({type: "undoReserve"})
     }
 
     //Este es unicamente para la funcionalidad de foto de perfil
@@ -86,7 +71,7 @@ const Provider = ({children})=>{
     }
 
     return (
-        <loginContext.Provider value={{...state, ...usrState, ...reservState, ...Avion, ...Hora, ...Aeropuerto, ...Fecha, ...Clase, ...selectedSeat, ...srcInput, LogIn, LogOut, MakeReservation, undoReservation, updatePhoto}}>
+        <loginContext.Provider value={{...state, ...usrState, ...reservState, ...srcInput, LogIn, LogOut, MakeReservation, undoReservation, updatePhoto, ...reserveDetails}}>
             {children}
         </loginContext.Provider>
     )

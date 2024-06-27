@@ -48,8 +48,8 @@ const AccountPage = ()=>{
                             <Form.Control onChange={(e)=>{
                                 setSrcInput(e.target.value)
                                 }} type="text"></Form.Control>
-                            <Form.Text className="fs-5">Introduce un link a una imagen online, de otra forma no funcionara.<br></br>Puede tardar algunos segundos.</Form.Text>
-                            <Form.Text className="fs-5"><br></br>Ejemplo: https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/384cb129896105.56ed80e1d4666.jpg</Form.Text>
+                            <Form.Text className="fs-5 text-break">Introduce un link a una imagen online, de otra forma no funcionara.<br></br>Puede tardar algunos segundos.</Form.Text>
+                            <Form.Text className="fs-5 text-break"><br></br>Ejemplo: https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/384cb129896105.56ed80e1d4666.jpg</Form.Text>
                         </Form.Group>
                         <Form.Group>
                             <Button type="submit" onClick={(e)=>{
@@ -79,7 +79,7 @@ const AccountPage = ()=>{
                         <h3>Actualmente, no tienes ninguna reserva hecha</h3>
                         :
                         <> 
-                            <h3>Actualmente, tienes una reserva de vuelo hacia {loggg.reservState}</h3>
+                            <h3>Actualmente, tienes una reserva de vuelo hacia {loggg.reserveDetails}</h3>
                             <h4>Especificaciones</h4>
                             <ListGroup className="fs-5">
                                 <ListGroup.Item>Avión: {loggg.Avion}</ListGroup.Item>

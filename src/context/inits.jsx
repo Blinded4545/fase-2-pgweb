@@ -27,55 +27,6 @@ export const initReserv = ()=>{
     return {reservState: reserv}
 }
 
-
-export const initAvion = ()=>{
-    const Av = localStorage.getItem("Avion")
-    if(Av == null){
-        return {Avion: ""}
-    }
-    return {Avion: Av}
-}
-
-export const initHora = ()=>{
-    const hr = localStorage.getItem("Hora")
-    if(hr == null){
-        return {Hora: ""}
-    }
-    return {Hora: hr}
-}
-
-export const initAeropuerto = ()=>{
-    const Ae = localStorage.getItem("Aeropuerto")
-    if(Ae == null){
-        return {Aeropuerto: ""}
-    }
-    return {Aeropuerto: Ae}
-}
-
-export const initFecha = ()=>{
-    const Fe = localStorage.getItem("Fecha")
-    if(Fe == null){
-        return {Fecha: ""}
-    }
-    return {Fecha: Fe}
-}
-
-export const initClase = ()=>{
-    const Cl = localStorage.getItem("Clase")
-    if(Cl == null){
-        return {Clase: ""}
-    }
-    return {Clase: Cl}
-}
-
-export const initSelectedSeat= ()=>{
-    const sl = localStorage.getItem("selectedSeat")
-    if(sl == null){
-        return {selectedSeat: ""}
-    }
-    return {selectedSeat: sl}
-}
-
 export const initSrcInput= ()=>{
     const srcA = Cookies.get("profilePhoto")
     if(srcA == null){
@@ -83,3 +34,12 @@ export const initSrcInput= ()=>{
     }
     return {srcInput: srcA}
 }
+
+export const initReserveDetails= ()=>{
+    const details = Cookies.get("ReserveDetails")
+    if(details == null){
+        return {ReservDetails: ""}
+    }
+    return {ReserveDetails: details}
+}
+

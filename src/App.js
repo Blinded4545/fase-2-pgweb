@@ -10,6 +10,7 @@ import NoPage from './pages/NoPage';
 import PrivateRoute from './routes/PrivateRoute';
 import PublicRoute from './routes/PublicRoute';
 import Gallery from './pages/Galeria';
+import Menu from './pages/Menu';
 
 function App() {
   return (
@@ -53,7 +54,7 @@ function App() {
           }></Route>
           <Route path="/Menu" element={
             <PrivateRoute>
-              <Gallery/>
+              <Menu/>
             </PrivateRoute>
           }></Route>
           <Route path="/noPage" element={<NoPage/>}></Route>

@@ -9,6 +9,7 @@ const PrivateRoute = ({children})=>{
 
     return (loginCntx)?children:<Navigate to="/noPage"></Navigate>
 
+    //Si no esta con una sesion activa, va a devolver la noPage
 }
 
 export default PrivateRoute
