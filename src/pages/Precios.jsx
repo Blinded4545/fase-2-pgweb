@@ -16,8 +16,8 @@ const Precios = ()=>{
                 <div className="h-100 w-100" style={{"backgroundColor": "#EDEDED"}}> {/* Here will be all the pricing plans per seat in a 100 seats plane */}
 
                     <div className="w-auto h-100 d-flex justify-content-center align-items-center gap-5" id="cardPriceContainer">
-                        <Card className="h-auto text-wrap cardClass" id="firstCard">
-                            <Card.Title className="fs-1 m-3">Primera clase  -  200$</Card.Title>
+                        <Card className="h-auto text-wrap cardClass">
+                            <Card.Title className="fs-1 m-3">Primera clase</Card.Title>
                             <Card.Text className="fs-3 mx-3">En esta clase encontrarás las siguientes características:</Card.Text>
                             <ListGroup className="fs-5">
                                 <ListGroup.Item>Asientos amplios y cómodos con mayor espacio para estirarse.</ListGroup.Item>
@@ -28,7 +28,7 @@ const Precios = ()=>{
                             </ListGroup>
                         </Card>
                         <Card className="h-auto text-wrap cardClass">
-                            <Card.Title className="fs-1 m-3">Segunda clase  -  100$</Card.Title>
+                            <Card.Title className="fs-1 m-3">Segunda clase</Card.Title>
                             <Card.Text className="fs-3 mx-3">En esta clase encontrarás las siguientes características:</Card.Text>
                             <ListGroup className="fs-5">
                                 <ListGroup.Item>Asientos cómodos con espacio adecuado para viajar.</ListGroup.Item>
@@ -40,7 +40,7 @@ const Precios = ()=>{
                             </ListGroup>
                         </Card>
                         <Card className="h-auto text-wrap cardClass">
-                            <Card.Title className="fs-1 m-3">Tercera clase  -  50$</Card.Title>
+                            <Card.Title className="fs-1 m-3">Tercera clase</Card.Title>
                             <Card.Text className="fs-3 mx-3">En esta clase encontrarás las siguientes características:</Card.Text>
                             <ListGroup className="fs-5">
                                 <ListGroup.Item>Asientos básicos con espacio limitado para viajar.</ListGroup.Item>

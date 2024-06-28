@@ -177,9 +177,12 @@ const DestinationToggle = ({src="https://placehold.co/100", Place="", Descriptio
                     <p className="fs-4">{Description}</p>
                     <div>
                         <Button className="fs-3" onClick={()=>{loggg.state?setShowModal(true):setShowA(true)}}>Reserva un vuelo</Button>
-                        <Button className="mx-2 fs-3">
-                            <Link state={{dest: Place}} to="/Gallery" className="text-white text-decoration-none">Ver imagenes</Link>
-                        </Button>
+                        
+                        <Link state={{dest: Place}} to="/Gallery" className="text-white text-decoration-none">V
+                            <Button className="mx-2 fs-3">
+                                Ver imagenes
+                            </Button>
+                        </Link>
                     </div>
                 </Accordion.Body>
             </Accordion>
