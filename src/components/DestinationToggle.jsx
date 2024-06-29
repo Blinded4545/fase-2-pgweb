@@ -45,7 +45,7 @@ const DestinationToggle = ({src="https://placehold.co/100", Place="", Descriptio
             id={s.seat}
             onHover={console.log("a")}
             onClick={()=>{(selectedSeat===s.seat)?setSelectedSeat(""):setSelectedSeat(s.seat)}}
-            className="w-25">{s.seat}</Button>
+            className="listButtons">{s.seat}</Button>
     })
 
     const handleCloseModal = ()=>{
@@ -102,7 +102,7 @@ const DestinationToggle = ({src="https://placehold.co/100", Place="", Descriptio
                                         {/* Esto es para poder obtener las fechas de un calendario */}
                                         <DatePicker
                                             id="datePicker"
-                                            className="h-100 fs-5 text-center gap-5"
+                                            className="h-100 fs-5 gap-5"
                                             required
                                             calendarIcon={null}
                                             closeCalendar={true}

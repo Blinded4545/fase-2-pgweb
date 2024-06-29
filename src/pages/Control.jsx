@@ -62,7 +62,7 @@ const Control = ()=>{
                     <div className="w-auto h-50">
                     <button className="" hidden={(clicked)?true:false} onClick={provFunc}>Click para cargar todos los usuarios</button>
 
-                    <Table striped bordered hover className="border-secondary rounded-5 fs-6">
+                    <Table striped bordered hover className="table-hover border-secondary rounded-5 fs-6">
                         <thead>
                             <tr>
                                 <th>#</th>

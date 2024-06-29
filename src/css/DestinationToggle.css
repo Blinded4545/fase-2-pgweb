@@ -36,14 +36,27 @@ input[type=number]{
 }
 
 #datePicker{
-    width:50%
+    width: 75%
 }
 
+.listButtons{
+    padding-left: 0 !important;
+    width: 25% !important;
+    text-align: center;
+}
 @media (max-width: 700px) {
     #datePicker{
-        width:100%
+        width:100%;
+        text-align: center;
     }
     .accordionCard{
         width: 100%
+    }
+
+    .listButtons{
+        padding-left: 0rem !important;
+        padding-right: 0rem !important;
+        width: 25% !important;
+        text-align: center;
     }
 }
