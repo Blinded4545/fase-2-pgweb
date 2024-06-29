@@ -65,8 +65,8 @@ const FAQ = ()=>{
                 </div>
 
             </div>
-            <div className="position-fixed sticky-bottom w-100 bg-white">
-                <FooterComponent/>
+            <div className="bg-white position-fixed sticky-bottom w-100 h-auto">
+                <FooterComponent className=""/>
             </div>
         </div>
     )

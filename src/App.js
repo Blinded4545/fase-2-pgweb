@@ -10,7 +10,7 @@ import NoPage from './pages/NoPage';
 import PrivateRoute from './routes/PrivateRoute';
 import PublicRoute from './routes/PublicRoute';
 import Gallery from './pages/Galeria';
-import Menu from './pages/Menu';
+import Control from './pages/Control';
 
 function App() {
   return (
@@ -52,9 +52,9 @@ function App() {
               <Gallery/>
             </PrivateRoute>
           }></Route>
-          <Route path="/Menu" element={
+          <Route path="/Control" element={
             <PrivateRoute>
-              <Menu/>
+              <Control/>
             </PrivateRoute>
           }></Route>
           <Route path="/noPage" element={<NoPage/>}></Route>

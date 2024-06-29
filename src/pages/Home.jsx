@@ -20,7 +20,7 @@ const Home = ()=>{
 
                 {/* Con esto se crea todo el display central */}
                 <div className="h-100 d-flex justify-content-center align-items-center overflow-scroll" id="wrapperA">
-                    <div className="container-xl w-100 rounded-5" id="content-wrapper">
+                    <div className="container-2xl w-75 rounded-5" id="content-wrapper">
                         <div className="row w-100 h-100 rounded-5 px-3 mx-1 my-3 d-flex justify-content-center align-items-center opacity-100" id="wrapperB">
                                 <div className="w-100 h-50 col d-flex justify-content-center align-items-center" id="imgWrapper">
                                     <img src={image} alt="" className="rounded-3" style={{scale: "1.5"}}/>

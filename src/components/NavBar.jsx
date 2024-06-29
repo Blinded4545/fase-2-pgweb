@@ -247,6 +247,15 @@ const NavBar = ()=>{
                                 <Dropdown.Item className="fs-4">
                                     <Link to="/Account" className="m-1 text-decoration-none">Cuenta</Link>
                                 </Dropdown.Item>
+                                {
+                                    (logggg.usrState==="admin")?
+                                        <Dropdown.Item className="fs-4 bg-warning rounded-3">
+                                            <Link to="/Control" className="m-1 text-decoration-none">Control</Link>
+                                        </Dropdown.Item>
+                                    :
+                                        <></>
+
+                                }
                                 <Dropdown.Item>
                                     <Button className="fs-4" variant="danger" onClick={()=>{
                                         logggg.LogOut(); 
@@ -282,7 +291,6 @@ const NavBar = ()=>{
                             }
                     </li>                    
                 </ul>    
-                {/* Esta es simplemente una alerta para avisar que no has iniciado sesion y no puedes reservar un vuelo */}
                 <ToastContainer position="bottom-end" className="position-fixed mb-5 me-4" style={{ zIndex: 1 }}>
                     <Toast show={showA} onClose={()=>{setShowA(false)}} delay={5000} autohide>
                         <Toast.Header>
