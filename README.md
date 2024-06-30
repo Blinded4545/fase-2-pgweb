@@ -37,4 +37,4 @@ Este comando hace que se inicie la aplicacion en la siguiente ruta
 Este problema ocurrio 2 veces debido al intento de minimizar las vulnerabilidades marcadas por nodejs
 
 ## En caso de mala visualizacion de los elementos
-Esto puede ser causado por el zoom del navegador, solo hay que mover hacer ZoomOut o ZoomIn para que se pueda ver mejor
+Esto puede ser causado por el zoom del navegador, solo hay que mover hacer ZoomOut o ZoomIn para que se pueda ver mejor, preferiblemente usar un tamaño de pagina de 2150x1080 puesto que aproximadamente con esta resolucion se desarrollo el proyecto
