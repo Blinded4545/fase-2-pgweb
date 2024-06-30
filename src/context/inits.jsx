@@ -36,10 +36,8 @@ export const initSrcInput= ()=>{
 }
 
 export const initReserveDetails= ()=>{
-    const details = Cookies.get("ReserveDetails")
-    if(details == null){
-        return {ReservDetails: ""}
-    }
-    return {ReserveDetails: details}
+    const details = Cookies.get("Reserve")
+    console.log(details, "a");
+    return {reserveDetails: details}
 }
 

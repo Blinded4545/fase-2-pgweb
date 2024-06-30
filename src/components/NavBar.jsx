@@ -1,5 +1,5 @@
 
-import { DropdownButton, Dropdown, Modal, Button, Form, Toast, ToastContainer} from "react-bootstrap";
+import { DropdownButton, Dropdown, Modal, Button, Form, Toast, ToastContainer, FormGroup, FormControl} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { useContext } from "react";
@@ -16,10 +16,20 @@ const NavBar = ()=>{
     const logggg = useContext(loginContext)
     const navigate = useNavigate();
 
+    //Esto es de todos los inputs
     const [usrInput, setUsrInput] = useState("")
     const [emailInput, setEmailInput] = useState("")
     const [pwdInput, setPwdInput] = useState("")
-    //const [recoveryPassword, setRecoveryPassword] = useState(false)
+    const [recoveryText, setRecoveryText] = useState("")
+
+    //Esto de la recuperacion de contraseña
+    const [showRecoveryModal, setShowRecoveryModal] = useState(false)
+    const [recoveryCode, setRecoveryCode] = useState("")
+    const [newPassword, setNewPassword] = useState("")
+    const [recoveryClicked, setRecoveryClicked] = useState(false)
+    const [validRecovery, setValidRecovery] = useState("")
+
+    //Esto es del login y del registro
     const [ShowLoginModal, setShowLoginModal] = useState(false)
     const [ShowRegisterModal, setShowRegisterModal] = useState(false)
     const [showPassword, setShowPassword] = useState(false)
@@ -73,6 +83,48 @@ const NavBar = ()=>{
         setShowRegisterModal(false)
     }
 
+    const sendRecovery = async ()=>{
+        if(!recoveryClicked){
+            console.log(1);
+            await fetch("http://localhost:8000/recoveryMail", {
+                method: "POST",
+                credentials: "same-origin",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({usr: recoveryText})
+            }).then(res=>{
+                console.log(res);
+            })
+            setRecoveryClicked(true)
+        }else if(recoveryClicked){
+            if(validRecovery!=true){
+                console.log(2);
+                await fetch("http://localhost:8000/checkCode", {
+                    method: "POST",
+                    credentials: "same-origin",
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({usr: recoveryText, code: recoveryCode})
+                }).then(res=>{
+                    if(res.status===200){
+                        setValidRecovery(true)
+                    }else{
+                        setValidRecovery(false)
+                    }
+                })
+            }else{
+                console.log(3);
+                await fetch("http://localhost:8000/changePassword", {
+                    method: "put",
+                    credentials: "same-origin",
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({usr: recoveryText, newPwd: newPassword})
+                }).then(res=>{
+                    console.log(res);
+                })
+                window.location.reload()
+            }
+        }
+    }
+
     return (
         <>
             {/* Login Modal and form */}
@@ -80,6 +132,9 @@ const NavBar = ()=>{
                     setShowLoginModal(false)
                     setValidLogIn(true)
                     setClicked(false)
+                    setUsrInput("")
+                    setEmailInput("")
+                    setPwdInput("")
                 }}>
                 <Modal.Header closeButton>
                     <Modal.Title>Inicio de sesión</Modal.Title>
@@ -110,7 +165,7 @@ const NavBar = ()=>{
                     {
                         (validLogIn===false)
                         ?
-                        <div className="bg-danger text-white rounded-3 py-1 px-3">Username or email alredy exists</div>
+                        <div className="bg-danger text-white rounded-3 py-1 px-3">Username or password incorrect</div>
                         :
                         <></>
                     }
@@ -129,7 +184,8 @@ const NavBar = ()=>{
                     </Button>
                     <Button className="mx-3" variant="primary" type="submit" href="/" onClick={(e)=>{
                         e.preventDefault()
-                        //logInFunc()
+                        setShowRecoveryModal(true)
+                        setShowLoginModal(false)
                     }}>
                         Recuperar Contraseña
                     </Button>
@@ -138,6 +194,66 @@ const NavBar = ()=>{
                 <Modal.Footer>
                     <Button variant="primary" onClick={()=>{setShowLoginModal(false)}}>
                         Cerrar
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+
+
+            {/* Recovery Modal */}
+            <Modal centered show={showRecoveryModal} onHide={()=>{setShowRecoveryModal(false)}}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Password Recovery</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {
+                        (recoveryClicked)
+                        ?
+                            (validRecovery===true)
+                            ?
+                            //Esto es para el TERCER formulario
+                            <Form>
+                                <FormGroup>
+                                    <Form.Label>Introduce la nueva contraseña</Form.Label>
+                                    <Form.Control required type="text" placeholder="Contraseña" onChange={(e)=>{setNewPassword(e.target.value)}}/>
+                                </FormGroup>
+                                <FormGroup className="mt-3">
+                                    <Button variant="primary" disabled={(newPassword==="")?true:false} onClick={sendRecovery}>Enviar</Button>
+                                </FormGroup>
+                            </Form>
+                            :
+                            //Esto es para el SEGUNDO formulario
+                            <Form>
+                                <FormGroup>
+                                    <Form.Label>Introduce el codigo enviado</Form.Label>
+                                    <Form.Control required type="text" placeholder="Codigo" onChange={(e)=>{
+                                        setRecoveryCode(e.target.value)
+                                    }}></Form.Control>
+                                </FormGroup>
+                                <FormGroup className="mt-3">
+                                    <Button variant="primary" disabled={(recoveryCode==="")?true:false} onClick={sendRecovery}>Enviar</Button>
+                                </FormGroup>
+                            </Form>
+                        :
+                        // Esto es para el PRIMER formulario
+                            <Form>
+                                <FormGroup>
+                                    <Form.Label className="fs-4 text-center">Se enviara un correo si existe la cuenta con el usuario introducido</Form.Label>
+                                </FormGroup>
+                                <FormGroup className="mt-3">
+                                    <Form.Label>Username of the account</Form.Label>
+                                    <Form.Control required type="text" placeholder="Username or email" onChange={(e)=>{
+                                        setRecoveryText(e.target.value)
+                                    }}/>
+                                </FormGroup>
+                                <FormGroup className="mt-3">
+                                    <Button disabled={(recoveryText==="")?true:false} variant="primary" onClick={sendRecovery}>Enviar</Button>
+                                </FormGroup>
+                            </Form>
+                    }
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button disabled={(recoveryText==="")?true:false} variant="primary" onClick={()=>{setShowRecoveryModal(false)}}>
+                        Close
                     </Button>
                 </Modal.Footer>
             </Modal>

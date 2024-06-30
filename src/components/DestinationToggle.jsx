@@ -33,8 +33,9 @@ const DestinationToggle = ({src="https://placehold.co/100", Place="", Descriptio
         {seat: "E1"}, {seat: "E2"}, {seat: "E3"}, {seat: "E4"}, {seat: "E5"}, {seat: "E6"}]
 
     //Con esto se pasan todos los datos necesarios al context para realizar una reservacion de vuelo
-    const setReservs = ()=>{
-        loggg.MakeReservation(Place, Avion, Hora, Aeropuerto, `${Fecha.getUTCDate()}/${Fecha.getUTCMonth()}/${Fecha.getUTCFullYear()}`, Clase, selectedSeat)
+    const setReservs = async ()=>{
+        await loggg.MakeReservation(Place, Avion, Hora, Aeropuerto, `${Fecha.getUTCDate()}/${Fecha.getUTCMonth()}/${Fecha.getUTCFullYear()}`, Clase, selectedSeat)
+        window.location.reload()
     }
 
     //Con esto se crea toda la tabla de asientos en el formulario de reserva
@@ -138,10 +139,12 @@ const DestinationToggle = ({src="https://placehold.co/100", Place="", Descriptio
                                         */}
 
                                         <Button 
-                                        disabled={(loggg.reservState==="")? ((selectedSeat!=="")?false:true):true} 
-                                        type="Submit" 
+                                        disabled={(loggg.reserveDetails!==undefined || selectedSeat==="" || Clase==="")? true:false} 
                                         className="my-3 fs-4" 
-                                        onClick={setReservs}
+                                        onClick={(e)=>{
+                                            e.preventDefault()
+                                            setReservs()
+                                        }}
                                         >
                                             Reservar
                                         </Button>
@@ -151,6 +154,13 @@ const DestinationToggle = ({src="https://placehold.co/100", Place="", Descriptio
                                         <Button className="fs-4 mx-3" onClick={()=>{setSelectedSeat("")}}>Cambiar asiento</Button>
                                         :
                                         <></>}
+
+                                        {(loggg.reserveDetails!==undefined)
+                                        ?
+                                        <h3 className="text-danger">Ya tienes una reservacion hecha</h3>
+                                        :
+                                        <></>
+                                        }
                                     </Form.Group>
                                     <Form.Group>
                                         {(loggg.reservState!=="")?<Form.Text className="fs-5 text-danger"><strong>Ya hiciste una reservación.</strong></Form.Text>:<></>}

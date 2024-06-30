@@ -109,7 +109,7 @@ const Gallery = ()=>{
                         <div className="text-wrap w-100 h-auto text-center d-flex justify-content-center" id="textWrapper">
                             <h1 className="w-75">{titulos[dest]}</h1>
                         </div>
-                        <div className="d-flex w-100 my-5 px-5 justify-content-between flex-column" id="imgChildsWrapper">
+                        <div className="d-flex w-100 my-5 px-5 justify-content-between flex-row" id="imgChildsWrapper">
                             <div className="imgWrappers px-5">
                                 <div className="rounded-4" style={{"backgroundImage": `url(${imgs[dest][0]})`, "backgroundSize": "cover", "backgroundPosition": "center"}}>
                                     <img src="https://placehold.co/700" alt="" className="w-100 h-auto opacity-0"/>
@@ -134,7 +134,7 @@ const Gallery = ()=>{
                     </div>
                 }
 
-                <div className="bg-white position-relative sticky-bottom w-100 h-auto">
+                <div className="bg-white position-fixed sticky-bottom w-100 h-auto">
                     <FooterComponent className=""/>
                 </div>
             </div>

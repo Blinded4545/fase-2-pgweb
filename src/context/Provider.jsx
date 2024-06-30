@@ -40,28 +40,37 @@ const Provider = ({children})=>{
     }
 
     //Con esto se almacenan en el localstorage todos los datos necesarios de la reservacion de vuelo
-    const MakeReservation = (place, Avion, Hora, Aeropuerto, Fecha, Clase, selectedSeat)=>{
+    const MakeReservation = async (place, Avion, Hora, Aeropuerto, Fecha, Clase, selectedSeat)=>{
         const ReservDet = `${place}.${Avion}.${Hora}.${Aeropuerto}.${Fecha}.${Clase}.${selectedSeat}`
         
         console.log(ReservDet);
 
-        fetch("http://localhost:8000/makeReservation", { //Enviar detalles de reservacion al backend
+        await fetch("http://localhost:8000/makeReservation", { //Enviar detalles de reservacion al backend
             method: "PUT",
             credentials: "include",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({reservDetails: ReservDet, usr: state})
         }).then(res=>console.log(res)).catch(err=>console.log(err))
 
-        dispatchReservState({type: "makeReserve"})
+        dispatchReservState({type: "MakeReservation"})
         dispatchReserveDetails(ReservDet, {type: "makeReserve"})
         
     }
 
     //Con esto se eliminan todos los datos relacionados con la reservacion de vuelo
-    const undoReservation = ()=>{
+    const undoReservation = async ()=>{
         
+        await fetch("http://localhost:8000/deleteReserv", {
+            method: "DELETE",
+            credentials: "include",
+            headers: {"Content-type": "application/json"},
+            body: JSON.stringify({usr: usrState})
+        }).then(res=>{
+            console.log(res);
+        })
         dispatchReservState({type: "undo"})
         dispatchReserveDetails({type: "undoReserve"})
+        window.location.reload();
     }
 
     //Este es unicamente para la funcionalidad de foto de perfil

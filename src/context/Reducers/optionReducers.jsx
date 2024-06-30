@@ -17,9 +17,10 @@ export const reserveDetailsReducer = (Reserve={}, action)=>{
     switch(action){
         case "makeReserve":
             console.log(Reserve);
-            return {createReservation: Reserve}
+            return {reserveDetails: Reserve}
         case "undoReserve":
-            return {createReservation: ""}
+            console.log("deleted");
+            return {reserveDetails: ""}
         default:
             return Reserve
     }

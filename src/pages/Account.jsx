@@ -27,7 +27,7 @@ const AccountPage = ()=>{
 
     const deleteReserv = ()=>{
         loggg.undoReservation();
-        window.location.reload();
+        
     }
 
     return(
@@ -74,20 +74,20 @@ const AccountPage = ()=>{
                     {/* Con esto se muestra la reserva actual y una lista con las caracteristicas de la reserva */}
                     <div className="h-auto">
                         <h2>Reserva actual:</h2>
-                        {(loggg.reservState==="")
+                        {(loggg.reserveDetails===undefined)
                         ?
-                        <h3>Actualmente, no tienes ninguna reserva hecha</h3>
+                            <h3>Actualmente, no tienes ninguna reserva hecha</h3>
                         :
                         <> 
-                            <h3>Actualmente, tienes una reserva de vuelo hacia {loggg.reserveDetails}</h3>
-                            <h4>Especificaciones</h4>
+                            <h3>Actualmente, tienes una reserva de vuelo hacia <strong>{loggg.reserveDetails.split(".")[0]}</strong></h3>
+                            <h4>Especificaciones:</h4>
                             <ListGroup className="fs-5">
-                                <ListGroup.Item>Avión: {loggg.Avion}</ListGroup.Item>
-                                <ListGroup.Item>Hora: {loggg.Hora}</ListGroup.Item>
-                                <ListGroup.Item>Aeropuerto: {loggg.Aeropuerto}</ListGroup.Item>
-                                <ListGroup.Item>Fecha: {loggg.Fecha}</ListGroup.Item>
-                                <ListGroup.Item>Clase: {loggg.Clase}</ListGroup.Item>
-                                <ListGroup.Item>Asiento: {loggg.selectedSeat}</ListGroup.Item>
+                                <ListGroup.Item>Avión: {loggg.reserveDetails.split(".")[1]}</ListGroup.Item>
+                                <ListGroup.Item>Hora: {loggg.reserveDetails.split(".")[2]}</ListGroup.Item>
+                                <ListGroup.Item>Aeropuerto: {loggg.reserveDetails.split(".")[3]}</ListGroup.Item>
+                                <ListGroup.Item>Fecha: {loggg.reserveDetails.split(".")[4]}</ListGroup.Item>
+                                <ListGroup.Item>Clase: {loggg.reserveDetails.split(".")[5]}</ListGroup.Item>
+                                <ListGroup.Item>Asiento: {loggg.reserveDetails.split(".")[6]}</ListGroup.Item>
                             </ListGroup>
                             <Button className="fs-5" onClick={deleteReserv}>Click para eliminar la reserva</Button>
                         </>

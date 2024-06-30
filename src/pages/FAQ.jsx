@@ -58,7 +58,7 @@ const FAQ = ()=>{
                                 <h2>¿En cuánto al diseño, que fallas podría presentar?</h2>
                             </Accordion.Header>
                             <Accordion.Body>
-                                <h4 className="text-wrap">Una de las cosas más preocupantes para el equipo es el cómo se pueda presentar la aplicación en distintos navegadores, ya que se nos presentó un problema particular y es que, a un zoom del 100%, se veía muy distinto entre diferentes navegadores, se lo atribuimos mayormente al tamaño de la pantalla en la que el navegador esté presentándose.</h4>
+                                <h4 className="text-wrap">Una de las cosas más preocupantes para el equipo es el cómo se pueda presentar la aplicación en distintos navegadores, ya que se nos presentó un problema particular y es que, a un zoom del 100%, se veía muy distinto entre diferentes navegadores. Esto se lo atribuimos mayormente al tamaño de la pantalla en la que el navegador esté presentándose, por lo que recomendamos visualizar la pagina en 2150x1080 aproximadamente para ver mejor la pagina</h4>
                             </Accordion.Body>
                         </Accordion.Item>
                     </Accordion>
