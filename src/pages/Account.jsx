@@ -6,6 +6,8 @@ import NavBar from "../components/NavBar"
 import loginContext from "../context/LoginContext"
 import { Button, Form, ListGroup, Modal } from "react-bootstrap"
 
+import "../css/Account.css"
+
 const AccountPage = ()=>{
 
     const loggg = useContext(loginContext)
@@ -32,7 +34,7 @@ const AccountPage = ()=>{
 
     return(
         <>
-            <div className="position-absolute w-100">
+            <div className="position-fixed sticky-top w-100">
                 <NavBar/>
             </div>
 
@@ -63,7 +65,7 @@ const AccountPage = ()=>{
 
 
             {/* Con esto se crea toda la seccion de cuenta */}
-            <div className="w-100 h-100 d-flex align-items-center">
+            <div className="w-100 h-100 d-flex align-items-center" id="accountWrapper">
                 <div className="w-100 h-auto d-flex align-items-center justify-content-center flex-column"> {/* This is for the image */}
                     <div className="w-100 h-100 d-flex justify-content-center align-items-center flex-column">
                         <img className="rounded-circle" src={loggg.srcInput} alt=""/>
@@ -89,13 +91,15 @@ const AccountPage = ()=>{
                                 <ListGroup.Item>Clase: {loggg.reserveDetails.split(".")[5]}</ListGroup.Item>
                                 <ListGroup.Item>Asiento: {loggg.reserveDetails.split(".")[6]}</ListGroup.Item>
                             </ListGroup>
-                            <Button className="fs-5" onClick={deleteReserv}>Click para eliminar la reserva</Button>
+                            <div id="buttonWrapper">
+                                <Button className="fs-5" onClick={deleteReserv}>Click para eliminar la reserva</Button>
+                            </div>
                         </>
                         }
                     </div>
                 </div>
             </div>
-            <div className="position-absolute sticky-bottom w-100 bg-white">
+            <div className="position-fixed sticky-bottom w-100 bg-white">
                 <FooterComponent/>
             </div>
         </>

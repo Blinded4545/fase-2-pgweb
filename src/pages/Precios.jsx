@@ -10,10 +10,10 @@ const Precios = ()=>{
         <>
             {/* En esta pagina se muestran los precios y caracteristicas de cada una de las clases de vuelo, mas adelante cuando se tenga el backend cobrara mas importancia */}
             <div className="h-100 w-100">
-                <div className="position-absolute w-100">
+                <div className="sticky-top w-100">
                     <NavBar/>
                 </div>
-                <div className="h-100 w-100" style={{"backgroundColor": "#EDEDED"}}> {/* Here will be all the pricing plans per seat in a 100 seats plane */}
+                <div className="h-100 w-100" style={{"backgroundColor": "#EDEDED"}} id="allPriceCardWrapper"> {/* Here will be all the pricing plans per seat in a 100 seats plane */}
 
                     <div className="w-auto h-100 d-flex justify-content-center align-items-center gap-5" id="cardPriceContainer">
                         <Card className="h-auto text-wrap cardClass">

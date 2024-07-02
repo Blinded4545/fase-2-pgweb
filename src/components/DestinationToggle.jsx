@@ -157,13 +157,10 @@ const DestinationToggle = ({src="https://placehold.co/100", Place="", Descriptio
 
                                         {(loggg.reserveDetails!==undefined)
                                         ?
-                                        <h3 className="text-danger">Ya tienes una reservacion hecha</h3>
+                                        <h4 className="text-danger"><strong>Ya hiciste una reservación.</strong></h4>
                                         :
                                         <></>
                                         }
-                                    </Form.Group>
-                                    <Form.Group>
-                                        {(loggg.reservState!=="")?<Form.Text className="fs-5 text-danger"><strong>Ya hiciste una reservación.</strong></Form.Text>:<></>}
                                     </Form.Group>
                                 </Form>
                             </div>

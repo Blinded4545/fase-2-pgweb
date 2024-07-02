@@ -11,10 +11,15 @@
 
 @media (max-width: 700px) {
     .cardClass{
-        width: 100%;
+        width: 90%;
     }
 
     #cardPriceContainer{
-        flex-direction: column;
+        display: block !important;
+    }
+    
+    #allPriceCardWrapper{
+        height: auto !important;
+        padding-bottom: 3rem !important;
     }
 }

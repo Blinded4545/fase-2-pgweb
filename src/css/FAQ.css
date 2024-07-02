@@ -1,0 +1,18 @@
+
+
+@media (max-width: 700px) {
+    #faqWrapper{
+        height: auto !important;
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
+    }
+
+    #accordionContainer{
+        height: auto !important;
+    }
+
+    #pruebaa{
+        padding-top: 0 !important;
+        height: auto !important;
+    }
+}

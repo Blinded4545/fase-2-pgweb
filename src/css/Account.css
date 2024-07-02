@@ -1,0 +1,14 @@
+
+@media (max-width: 700px) {
+    #accountWrapper{
+        margin-top: 5rem;
+        padding-bottom: 5rem;
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+
+    #buttonWrapper{
+        display: flex;
+        justify-content: center;
+    }
+}

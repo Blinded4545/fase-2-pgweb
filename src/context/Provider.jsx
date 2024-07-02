@@ -4,9 +4,8 @@ import { useReducer } from "react";
 import loginContext from "./LoginContext";
 import reducer from "./Reducers/Reducer";
 import usrReducer from "./Reducers/usrReducer"
-import reservReducer from "./Reducers/reservReducer";
 import { srcInputReducer, reserveDetailsReducer } from "./Reducers/optionReducers";
-import { init, initReserv, initSrcInput, initUsr, initReserveDetails } from "./inits";
+import { init, initSrcInput, initUsr, initReserveDetails } from "./inits";
 
 
 const Provider = ({children})=>{
@@ -14,7 +13,6 @@ const Provider = ({children})=>{
     //Todos los datos necesarios para hacer los inicios de sesion, manejo de reservaciones y cambio de foto de perfil
     const [state, dispatchState] = useReducer(reducer, {}, init)
     const [usrState, dispatchUsrState] = useReducer(usrReducer, {}, initUsr)
-    const [reservState, dispatchReservState] = useReducer(reservReducer, {}, initReserv)
     const [srcInput, dispatchSrcInput] = useReducer(srcInputReducer, {}, initSrcInput)
     const [reserveDetails, dispatchReserveDetails] = useReducer(reserveDetailsReducer, {}, initReserveDetails)
 
@@ -52,7 +50,6 @@ const Provider = ({children})=>{
             body: JSON.stringify({reservDetails: ReservDet, usr: state})
         }).then(res=>console.log(res)).catch(err=>console.log(err))
 
-        dispatchReservState({type: "MakeReservation"})
         dispatchReserveDetails(ReservDet, {type: "makeReserve"})
         
     }
@@ -68,7 +65,6 @@ const Provider = ({children})=>{
         }).then(res=>{
             console.log(res);
         })
-        dispatchReservState({type: "undo"})
         dispatchReserveDetails({type: "undoReserve"})
         window.location.reload();
     }
@@ -80,7 +76,7 @@ const Provider = ({children})=>{
     }
 
     return (
-        <loginContext.Provider value={{...state, ...usrState, ...reservState, ...srcInput, LogIn, LogOut, MakeReservation, undoReservation, updatePhoto, ...reserveDetails}}>
+        <loginContext.Provider value={{...state, ...usrState, ...srcInput, LogIn, LogOut, MakeReservation, undoReservation, updatePhoto, ...reserveDetails}}>
             {children}
         </loginContext.Provider>
     )

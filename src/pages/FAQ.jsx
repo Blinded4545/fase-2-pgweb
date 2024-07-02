@@ -4,6 +4,8 @@ import NavBar from "../components/NavBar";
 import FooterComponent from "../components/Footer";
 import { Accordion } from "react-bootstrap";
 
+import "../css/FAQ.css"
+
 // PREGUNTAS FRECUENTES
 
 const FAQ = ()=>{
@@ -13,14 +15,14 @@ const FAQ = ()=>{
 
         // Esta es solo la seccion de preguntas frecuentes, dado que son pocas se opto por crear cada acordion individualmente
         <div className="h-100">
-            <div className="position-absolute sticky-top w-100">
+            <div className="sticky-top w-100">
                 <NavBar/>
             </div>
             <div className="w-100 h-100 d-flex justify-content-center align-items-center" id="faqWrapper" style={{"backgroundColor": "#EDEDED"}}>
 
-                <div className="h-auto w-75 bg-white rounded border border-solid border-secondary">
+                <div id="pruebaa" className="h-auto w-75 bg-white rounded border border-solid border-secondary">
                     <h1 className="m-3">Preguntas Frecuentes</h1>
-                    <Accordion className="">
+                    <Accordion id="accordionContainer">
                         <Accordion.Item eventKey="0" className="w-100">
                             <Accordion.Header>
                                 <h2>¿El uso de la aplicación es seguro?</h2>
@@ -65,7 +67,7 @@ const FAQ = ()=>{
                 </div>
 
             </div>
-            <div className="bg-white position-fixed sticky-bottom w-100 h-auto">
+            <div className="bg-white sticky-bottom w-100 h-auto">
                 <FooterComponent className=""/>
             </div>
         </div>
